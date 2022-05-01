@@ -1,6 +1,8 @@
 package com.example.springrediscachedemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,7 @@ public class CachingArticlesService implements ArticlesService{
     }
 
     @Override
+    @CacheEvict(value = "articles",key = "#articleId")
     public void removeArticle(Long articleId) {
         articlesRepository.deleteById(articleId);
     }
@@ -32,12 +35,13 @@ public class CachingArticlesService implements ArticlesService{
     }
 
     @Override
+    @CachePut(value = "articles",key = "#articleId",unless = "#result==null")
     public Article updateLikes(Long articleId, int likes) {
         Optional<Article> articleOptional = articlesRepository.findById(articleId);
         if (articleOptional.isPresent()) {
             Article article = articleOptional.get();
             article.setLikes(likes);
-            articlesRepository.save(article);
+            return articlesRepository.save(article);
         }
         return null;
     }
