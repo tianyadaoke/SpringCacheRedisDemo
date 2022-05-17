@@ -1,4 +1,4 @@
-package com.example.springrediscachedemo;
+package com.example.springrediscachedemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

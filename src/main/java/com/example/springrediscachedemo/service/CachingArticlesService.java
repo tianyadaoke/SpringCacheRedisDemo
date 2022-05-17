@@ -1,5 +1,7 @@
-package com.example.springrediscachedemo;
+package com.example.springrediscachedemo.service;
 
+import com.example.springrediscachedemo.dao.ArticlesRepository;
+import com.example.springrediscachedemo.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

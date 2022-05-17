@@ -1,5 +1,7 @@
-package com.example.springrediscachedemo;
+package com.example.springrediscachedemo.web;
 
+import com.example.springrediscachedemo.service.ArticlesService;
+import com.example.springrediscachedemo.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

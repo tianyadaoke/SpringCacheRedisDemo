@@ -26,16 +26,15 @@ public class SpringRedisCacheDemoApplication {
         SpringApplication.run(SpringRedisCacheDemoApplication.class, args);
     }
 
-    @Bean
-    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory){
-        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory);
-        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
-        RedisSerializationContext.SerializationPair serializationPair
-                = RedisSerializationContext.SerializationPair.fromSerializer(serializer);
-        RedisCacheConfiguration redisCacheConfiguration
-                = RedisCacheConfiguration.defaultCacheConfig().serializeValuesWith(serializationPair);
-        return new RedisCacheManager(redisCacheWriter,redisCacheConfiguration);
-
-    }
+    //@Bean
+//    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory){
+//        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory);
+//        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
+//        RedisSerializationContext.SerializationPair serializationPair
+//                = RedisSerializationContext.SerializationPair.fromSerializer(serializer);
+//        RedisCacheConfiguration redisCacheConfiguration
+//                = RedisCacheConfiguration.defaultCacheConfig().serializeValuesWith(serializationPair);
+//        return new RedisCacheManager(redisCacheWriter,redisCacheConfiguration);
+//    }
 
 }
